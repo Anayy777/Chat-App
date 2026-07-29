@@ -8,7 +8,7 @@ export interface CustomWebSocket extends WebSocket {
 
 export type IncomingMessage = 
     | {
-        type : 'JOIN ROOM', 
+        type : 'JOIN_ROOM', 
         payload : {
             roomId : string 
             username : string
@@ -17,7 +17,7 @@ export type IncomingMessage =
     | {
         type : 'MESSAGE' , 
         payload : {
-            message : string | number
+            message : string
         }
     }
 
