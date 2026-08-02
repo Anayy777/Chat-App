@@ -1,40 +1,20 @@
 // App.tsx
 import { useState } from 'react';
+import { RoomGate } from './RoomGate';
 import { ChatRoom } from './ChatRoom';
 
 export default function App() {
-  const [username, setUsername] = useState('');
-  const [roomId, setRoomId] = useState('');
-  const [joined, setJoined] = useState(false);
+  const [session, setSession] = useState<{ roomId: string; username: string } | null>(null);
 
-  if (joined) {
-    return <ChatRoom roomId={roomId} username={username} />;
+  if (session) {
+    return (
+      <ChatRoom
+        roomId={session.roomId}
+        username={session.username}
+        onLeave={() => setSession(null)}
+      />
+    );
   }
 
-  return (
-    <div style={{ maxWidth: '300px', margin: '50px auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <h2>Join Chat</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        style={{ padding: '8px' }}
-      />
-      <input
-        type="text"
-        placeholder="Room ID"
-        value={roomId}
-        onChange={(e) => setRoomId(e.target.value)}
-        style={{ padding: '8px' }}
-      />
-      <button 
-        disabled={!username.trim() || !roomId.trim()} 
-        onClick={() => setJoined(true)}
-        style={{ padding: '8px 16px' }}
-      >
-        Join Room
-      </button>
-    </div>
-  );
+  return <RoomGate onEnter={(roomId, username) => setSession({ roomId, username })} />;
 }
