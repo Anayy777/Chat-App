@@ -63,7 +63,7 @@ export default function useChatSocket({roomId , username , url} : useChatSocketP
     const sendMessage = useCallback((messageText: string) => {
     if (wsRef?.current?.readyState === WebSocket.OPEN) {
       const payload: OutgoingClientMessage = {
-        type: 'CHAT_MESSAGE',
+        type: 'MESSAGE',
         payload: { message: messageText },
       };
       wsRef?.current.send(JSON.stringify(payload));
