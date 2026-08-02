@@ -1,1 +1,44 @@
 @import "tailwindcss";
+
+:root {
+  --font-display: "Space Grotesk", ui-sans-serif, sans-serif;
+  --font-body: "Inter", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-bg: #121317;
+  --color-surface: #1b1d23;
+  --color-surface-2: #22242c;
+  --color-border: #2a2d35;
+  --color-text: #f5f3ee;
+  --color-text-muted: #8b8f99;
+  --color-accent: #f2a93b;
+  --color-accent-dim: #7a5a24;
+  --color-online: #4ade80;
+  --color-offline: #f2545b;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.045) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* thin, quiet scrollbars for the message feed */
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 999px;
+}
