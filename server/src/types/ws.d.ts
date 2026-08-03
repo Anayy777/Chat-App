@@ -27,7 +27,7 @@ export type OutgoingMessage =
         type : "NEW_MESSAGE" | "SYSTEM_MESSAGE" , 
         payload : {
             username ?: string
-            text : string
+            text : string   
             timestamp ?:string
         }
     }
