@@ -2,9 +2,17 @@ import { WebSocketServer , WebSocket, on } from "ws";
 
 
 import { IncomingMessage , OutgoingMessage , CustomWebSocket } from "./types/ws";
-import { NodeHandle } from "typescript/unstable/sync";
+import http from "http"
 
-const wss = new WebSocketServer({port : 8080})
+
+const server = http.createServer()
+
+const wss = new WebSocketServer({server})
+const PORT = process.env.PORT || 8080
+
+server.listen(Number(PORT) , "0.0.0.0" , () => {
+    console.log(`Server running on PORT ${PORT}`)
+})
 
 const rooms = new Map<string , Set<CustomWebSocket>>()
 
