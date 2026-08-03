@@ -8,11 +8,7 @@ import http from "http"
 const server = http.createServer()
 
 const wss = new WebSocketServer({server})
-const PORT = process.env.PORT || 8080
 
-server.listen(Number(PORT) , "0.0.0.0" , () => {
-    console.log(`Server running on PORT ${PORT}`)
-})
 
 const rooms = new Map<string , Set<CustomWebSocket>>()
 
@@ -121,3 +117,9 @@ function handleDisconnect(ws : CustomWebSocket) : void{
     }
 
 }
+
+const PORT = process.env.PORT || 8080
+
+server.listen(Number(PORT) , "0.0.0.0" , () => {
+    console.log(`Server running on PORT ${PORT}`)
+})
