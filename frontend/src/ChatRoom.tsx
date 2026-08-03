@@ -13,7 +13,7 @@ export const ChatRoom: React.FC<ChatRoomProps> = ({ roomId, username, onLeave })
   const feedRef = useRef<HTMLDivElement | null>(null);
 
   const { messages, status, sendMessage } = useChatSocket({
-    url: 'ws://localhost:8080',
+    url: 'wss://chat-app-production-11c4.up.railway.app',
     roomId,
     username,
   });
